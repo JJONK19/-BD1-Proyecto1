@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const createModel = require('../services/create')
+const deleteModel = require('../services/delete')
 
 // Main route
 router.get('/', (req, res) => {
@@ -68,12 +70,34 @@ router.get('/cargartabtemp', (req, res) => {
 
 // Eliminar el modelo de datos
 router.get('/eliminarmodelo', (req, res) => {
-    res.send('Eliminar modelo');
-});
+    deleteModel() 
+      .then(() => {
+        res.status(200).json({
+            body: { message: 'Message: Model deleted successfully.' },
+        })
+      })
+      .catch(error => {
+        console.log('Error: ', error)
+        res.status(500).json({
+            body: { message: 'Error: Model not deleted. ', error },
+        })
+      })
+})
 
 // Crear el modelo de la base de datos
 router.get('/crearmodelo', (req, res) => {
-    res.send('Crear modelo');
-});
+    createModel() 
+      .then(() => {
+        res.status(200).json({
+            body: { message: 'Message: Model created successfully.' },
+        })
+      })
+      .catch(error => {
+        res.status(500).json({
+            body: { message: 'Error: Model not created. ', error },
+        })
+      })
+})
+
   
 module.exports = router;
