@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS cargo (
     id INT PRIMARY KEY,
     cargo VARCHAR(40) NOT NULL
-);
+); 
 
 -- Tabla Partido
 CREATE TABLE IF NOT EXISTS partido (
@@ -59,9 +59,9 @@ CREATE TABLE IF NOT EXISTS votacion (
 
 -- Tabla Voto
 CREATE TABLE IF NOT EXISTS voto (
-  id INT PRIMARY KEY,
+  id INT AUTO_INCREMENT PRIMARY KEY,
   voto INT NOT NULL,
   candidato INT NOT NULL,
   FOREIGN KEY (voto) REFERENCES votacion(id),
   FOREIGN KEY (candidato) REFERENCES candidato(id)
-);
+); 

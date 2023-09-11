@@ -5,7 +5,7 @@ CREATE TEMPORARY TABLE candidatoTemp (
   fecha_nacimiento DATE,
   partido_id INT,
   cargo_id INT
-);
+); 
 
 -- Tabla temporal para Cargos
 CREATE TEMPORARY TABLE cargoTemp (
@@ -40,7 +40,7 @@ CREATE TEMPORARY TABLE mesaTemp (
 CREATE TEMPORARY TABLE partidoTemp (
   id_partido INT,
   nombre_partido VARCHAR(50),
-  siglas VARCHAR(10),
+  siglas VARCHAR(15),
   fundacion DATE
 );
 

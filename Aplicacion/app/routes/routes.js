@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const createModel = require('../services/create')
 const deleteModel = require('../services/delete')
+const loadData = require('../services/load')
 
 // Main route
 router.get('/', (req, res) => {
@@ -65,8 +66,19 @@ router.get('/consulta11', (req, res) => {
 
 // Carga masiva de datos a la tabla temporal
 router.get('/cargartabtemp', (req, res) => {
-    res.send('Carga Masiva');
-});
+    loadData() 
+      .then(() => {
+        res.status(200).json({
+            body: { message: 'Message: Data loaded successfully.' },
+        })
+      })
+      .catch(error => {
+        console.log('Error: ', error)
+        res.status(500).json({
+            body: { message: 'Error: Data not loaded. ', error },
+        })
+      })
+})
 
 // Eliminar el modelo de datos
 router.get('/eliminarmodelo', (req, res) => {

@@ -35,8 +35,7 @@ async function closableQuery(query, params) {
 //Mantiene la conexion luego de ejecutar. Util para las tablas temporales.
 async function unclosableQuery(connection, query, params) {
     try{
-        connection = await mysql.createConnection(config.connection)
-        const [results,] = await connection.execute(connection, query, params)
+        const [results,] = await connection.execute(query, params)
         return results
 
     } catch(error) {
