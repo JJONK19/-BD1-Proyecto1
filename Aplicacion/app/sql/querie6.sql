@@ -1,4 +1,4 @@
 -- Mostra la cantidad de votos nulos
-SELECT count(*) AS 'Votos Nulos'
+SELECT count(distinct voto) AS 'Votantes Nulos'
 FROM voto 
 WHERE candidato = -1;
